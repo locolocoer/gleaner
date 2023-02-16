@@ -43,6 +43,7 @@
     <?php else: ?>
 
         <link rel="stylesheet" href="<?php $this->options->themeUrl('./assets/css/pic_page.css'); ?>">
+        <script src="<?php $this->options->themeUrl('./assets/js/pic_page.js'); ?>"></script>
         <link rel="stylesheet" href="<?php $this->options->themeUrl('./assets/iconfonts/iconfont.css'); ?>">
         <link href="//lf6-cdn-tos.bytecdntp.com/cdn/expire-1-M/animate.css/4.1.1/animate.min.css" type="text/css"
             rel="stylesheet" />
@@ -108,6 +109,26 @@
                         $(".mode-check label").addClass("transition");
                     }, 100);
                 }
+                <?php  $this->widget('Widget_Contents_Page_List')->to($pages);
+                            while($pages->next()){
+                                if($pages->template == "pic-nav.php"){
+                                    $totalLink = $pages->permalink;
+                                }
+                            }
+                    ?>
+                $("#js-menu>ul>li>a").each(function(index,elem){
+                    if($(elem).attr("href")=="<?php echo $totalLink;?>"){
+                        elem.setAttribute("onclick","return false;");
+                        elem.addEventListener("click",function(evt){
+                            if(localStorage.getItem("pageNum")===null){
+                                post("<?php echo $totalLink;?>",{ "pageNum":"1"});
+                            }else{
+                                post("<?php echo $totalLink;?>",{ "pageNum":localStorage.getItem("pageNum")});
+                            }
+                        })
+                    }
+                    
+                })
         })
     </script>
     <?php if ($this->options->bcool_gray): ?>

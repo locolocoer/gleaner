@@ -8,7 +8,7 @@
 if (!defined('__TYPECHO_ROOT_DIR__'))
     exit;
 $this->need('header.php'); ?>
-<script src="<?php $this->options->themeUrl('./assets/js/pic_page.js'); ?>"></script>
+
 <?php
 $options = Typecho_Widget::widget('Widget_Options');
 $pri_thumbs = explode("|", $options->bcool_cover); /*获取文章封面*/
@@ -63,6 +63,14 @@ if ($end >= $num) {
     input.addEventListener("wheel", function (event) {
         event.preventDefault();
     });
+    $("#submit").click(function(){
+        if($("#page").val()){
+            if($("#page").val() > 0 && $("#page").val() <= <?php echo ceil($num / 100) ?>){
+                localStorage.setItem("pageNum",$("#page").val());
+            }
+        }
+        // console.log($("#page").val())
+    })
     $(document).ready(function () {
         $("#submit").hover(function () {
             $("#submit").html("转到");
@@ -110,7 +118,8 @@ if ($end >= $num) {
         $(document).ready(function () {
             $("#prevPage").click(function () {
                 if (<?php echo $pageNum ?> > 1) {
-                    post("", { "pageNum":<?php echo $pageNum - 1; ?>})
+                    post("", { "pageNum":<?php echo $pageNum - 1; ?>});
+                    localStorage.setItem("pageNum","<?php echo $pageNum - 1; ?>");
                 }
             });
         });
@@ -118,7 +127,8 @@ if ($end >= $num) {
 
             $("#nextPage").click(function () {
                 if (<?php echo $pageNum ?> < <?php echo ceil($num / 100) ?>) {
-                    post("", { "pageNum":<?php echo $pageNum + 1; ?>})
+                    post("", { "pageNum":<?php echo $pageNum + 1; ?>});
+                    localStorage.setItem("pageNum","<?php echo $pageNum + 1; ?>");
                 }
             });
         });
