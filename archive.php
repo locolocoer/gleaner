@@ -39,7 +39,7 @@
             </div>
         </div>
     </div>
-
+    <?php $hasLogin = $this->user->hasLogin();?>
     <div class="archive-body">
         <div class="wrap">
             <div class="wrap_float grid">
@@ -51,7 +51,7 @@
                                 <div class="content" href='<?php $this->permalink() ?>'>
                                     <div class="thumb">
                                         <img class="lazy" src="<?php $this->options->themeUrl('./assets/img/loading.gif'); ?>"
-                                             data-src="<?php echo thumb($this); ?>" error-src="<?php $this->options->themeUrl('./assets/img/404.jpg'); ?>" alt=""/>
+                                             data-src="<?php echo thumb($this,$hasLogin); ?>" error-src="<?php $this->options->themeUrl('./assets/img/404.jpg'); ?>" alt=""/>
                                         <div class="widget">
                                             <div class="post-tags">
                                                 <div class="tag">

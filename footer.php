@@ -20,7 +20,7 @@
                     </div>
                 </div>
                 <?php if (!$this->is('index')) : ?>
-                    <div class="footer-right"><a href="#" class="login-link"><i class="fa-solid fa-circle-up"></i> 返回顶部</a>
+                    <div class="footer-right"><a id="roll_up" class="login-link"><i class="fa-solid fa-circle-up"></i> 返回顶部</a>
                     </div><?php endif; ?>
             </div>
         </div>
@@ -42,6 +42,13 @@
     </div>
 </div>
 </div>
+<script>
+    $("#roll_up").click(function(){
+        $("body,html").stop().animate(
+            {scrollTop:0}
+        );
+    })
+</script>
 <?php if ($this->is('index')) : ?>
     <style> .index-anchor {
             background-image: <?php if (empty($this->options->bcool_lightcolor)) echo 'linear-gradient(0deg, #4584b4, #1e4877)'; else echo $this->options->bcool_lightcolor; ?>;
@@ -184,6 +191,55 @@
         });
     }
 
+</script>
+<script src="<?php $this->options->themeUrl('./assets/iconfonts/iconfont.js'); ?>"></script>
+
+<script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/11.7.0/highlight.min.js"></script>
+<script>hljs.highlightAll();</script>
+<?php if($this->is("post")):?>
+<script type="text/javascript"
+   src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=default">
+</script>
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+    extensions: ["tex2jax.js"],
+    jax: ["input/TeX", "output/HTML-CSS"],
+    tex2jax: {
+      inlineMath:  [ ["$", "$"]],
+      displayMath: [ ["$$","$$"]],
+      processEscapes: true
+    },
+    "HTML-CSS": { availableFonts: ["TeX"],linebreaks:{automatic:true,width:"container"}},
+    CommonHTML: {
+    scale: 400
+    }
+  });
+</script>
+<?php endif;?>
+<script>
+    $('[data-fancybox="images"]').fancybox({
+            // Options will go here
+            buttons: [
+                "zoom",
+                // "share",
+                "slideShow",
+                "fullScreen",
+                // "download",
+                // "thumbs",
+                "close"
+            ],
+            image: {
+                // Wait for images to load before displaying
+                //   true  - wait for image to load and then display;
+                //   false - display thumbnail and load the full-sized image over top,
+                //           requires predefined image dimensions (`data-width` and `data-height` attributes)
+                preload: false
+            },
+            transitionEffect: "slide",
+
+            // Duration in ms for transition animation
+            transitionDuration: 2,
+        });
 </script>
 
 <?php $this->footer(); ?>

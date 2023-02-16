@@ -1,0 +1,114 @@
+{
+  "id": "3853219",
+  "name": "typecho_icon",
+  "font_family": "iconfont",
+  "css_prefix_text": "icon-",
+  "description": "",
+  "glyphs": [
+    {
+      "icon_id": "5618153",
+      "name": "WEB前端",
+      "font_class": "WEB",
+      "unicode": "e61c",
+      "unicode_decimal": 58908
+    },
+    {
+      "icon_id": "13304033",
+      "name": "python",
+      "font_class": "python",
+      "unicode": "e690",
+      "unicode_decimal": 59024
+    },
+    {
+      "icon_id": "3538506",
+      "name": "network",
+      "font_class": "network",
+      "unicode": "ec72",
+      "unicode_decimal": 60530
+    },
+    {
+      "icon_id": "8642158",
+      "name": "NETWORK",
+      "font_class": "NETWORK",
+      "unicode": "e7f4",
+      "unicode_decimal": 59380
+    },
+    {
+      "icon_id": "25972421",
+      "name": "network",
+      "font_class": "network1",
+      "unicode": "e617",
+      "unicode_decimal": 58903
+    },
+    {
+      "icon_id": "2199739",
+      "name": "编程，窗口",
+      "font_class": "programmingwindo",
+      "unicode": "e608",
+      "unicode_decimal": 58888
+    },
+    {
+      "icon_id": "3854402",
+      "name": "终端",
+      "font_class": "biancheng1",
+      "unicode": "e673",
+      "unicode_decimal": 58995
+    },
+    {
+      "icon_id": "26433316",
+      "name": "编程",
+      "font_class": "qtcode",
+      "unicode": "e676",
+      "unicode_decimal": 58998
+    },
+    {
+      "icon_id": "182617",
+      "name": "搞笑",
+      "font_class": "gaoxiao",
+      "unicode": "e616",
+      "unicode_decimal": 58902
+    },
+    {
+      "icon_id": "3876823",
+      "name": "07 深度学习",
+      "font_class": "DL",
+      "unicode": "e606",
+      "unicode_decimal": 58886
+    },
+    {
+      "icon_id": "8097111",
+      "name": "机器学习",
+      "font_class": "ML",
+      "unicode": "e6ac",
+      "unicode_decimal": 59052
+    },
+    {
+      "icon_id": "10199177",
+      "name": "默认",
+      "font_class": "moren",
+      "unicode": "e614",
+      "unicode_decimal": 58900
+    },
+    {
+      "icon_id": "11819093",
+      "name": "搞笑",
+      "font_class": "gaoxiao1",
+      "unicode": "e6b2",
+      "unicode_decimal": 59058
+    },
+    {
+      "icon_id": "27100643",
+      "name": "126-编程",
+      "font_class": "leetcode",
+      "unicode": "e678",
+      "unicode_decimal": 59000
+    },
+    {
+      "icon_id": "27751610",
+      "name": "编程",
+      "font_class": "cplusplus",
+      "unicode": "e62b",
+      "unicode_decimal": 58923
+    }
+  ]
+}
