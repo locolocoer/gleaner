@@ -63,6 +63,9 @@ if ($end >= $num) {
     input.addEventListener("wheel", function (event) {
         event.preventDefault();
     });
+    if($("#page").attr("placeholder")!=localStorage.getItem("pageNum")&&localStorage.getItem("pageNum")!=null){
+        post("",{"pageNum":localStorage.getItem("pageNum")});
+    }
     $("#submit").click(function(){
         if($("#page").val()){
             if($("#page").val() > 0 && $("#page").val() <= <?php echo ceil($num / 100) ?>){
