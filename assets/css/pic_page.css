@@ -200,7 +200,9 @@ input[type="number"] {
     .footer .wrap .footer-right {
         position:fixed;
         top: 90%;
-        right: 5px;
+        left:50%;
+        margin-left: 598px;
+        justify-content: flex-start;
     }
 }
 @media screen and (max-width:1000px) {

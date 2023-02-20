@@ -20,8 +20,10 @@
                     </div>
                 </div>
                 <?php if (!$this->is('index')) : ?>
-                    <div class="footer-right"><a id="roll_up" class="login-link"><i class="fa-solid fa-circle-up"></i> 返回顶部</a>
-                    </div><?php endif; ?>
+                    <div class="footer-right">
+                        <a id="roll_up" class="login-link"><i class="fa-solid fa-circle-up"></i> 返回顶部</a>
+                    </div>
+                <?php endif; ?>
             </div>
         </div>
     </div>
