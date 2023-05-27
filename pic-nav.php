@@ -64,12 +64,12 @@ if ($end >= $num) {
         event.preventDefault();
     });
     if($("#page").attr("placeholder")!=localStorage.getItem("pageNum")&&localStorage.getItem("pageNum")!=null){
-        post("",{"pageNum":localStorage.getItem("pageNum")});
+        post("",{"pageNum":parseInt(localStorage.getItem("pageNum"))});
     }
     $("#submit").click(function(){
         if($("#page").val()){
-            if($("#page").val() > 0 && $("#page").val() <= <?php echo ceil($num / 100) ?>){
-                localStorage.setItem("pageNum",$("#page").val());
+            if(parseInt($("#page").val()) > 0 && parseInt($("#page").val()) <= <?php echo ceil($num / 100) ?>){
+                localStorage.setItem("pageNum",parseInt($("#page").val()));
             }
         }
         // console.log($("#page").val())
@@ -95,6 +95,11 @@ if ($end >= $num) {
                 <div class="portfolio">
 
                     <?php for ($i = $begin; $i <= $end; $i++): ?>
+                        <?php 
+                        if (substr($thumbs[$i],0,4)!="http"){
+                            $thumbs[$i]="https://www.flyingfry.cn/usr/uploads/" . $thumbs[$i];
+                        }
+                            ?>
                         <a href="<?php echo $thumbs[$i]; ?>" data-fancybox="images">
                         <div class="portfolio-item p-2 col-lg-3 col-md-4 col-sm-6 col-xs-12">
                             <div class="content">

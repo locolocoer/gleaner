@@ -83,6 +83,9 @@ function thumb($obj,$hasLogin)
         $thumb = $cover;
     } else if ($options->bcool_cover && count($thumbs) > 0) {
         $thumb = $thumbs[rand(0, count($thumbs) - 1)];
+        if (substr($thumb,0,4)!="http"){
+            $thumb = "https://www.flyingfry.cn/usr/uploads/" . $thumb;
+        }
     } elseif (isset($attach->isImage) && $attach->isImage == 1) {
         $thumb = $attach->url;
     } else if ($img_src) {
