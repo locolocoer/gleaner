@@ -27,6 +27,7 @@ if ($this->user->hasLogin()) {
 }
 $num = count($thumbs);
 // shuffle($thumbs);
+echo $_POST["cate"];
 if($this->user->hasLogin()){
 $catearray = array("all"=>"全部","zqq"=>"仲秋秋","Nimo"=>"Nimo","lsy"=>"刘苏颖","minladuizhang"=>"敏啦队长",);
 }else{
@@ -91,7 +92,10 @@ if ($end >= $num) {
         event.preventDefault();
     });
     if($("#page").attr("placeholder")!=localStorage.getItem("pageNum")&&localStorage.getItem("pageNum")!=null){
-        post("",{"pageNum":parseInt(localStorage.getItem("pageNum"))});
+        post("",{"pageNum":parseInt(localStorage.getItem("pageNum")),"cate":localStorage.getItem("cate")});
+    }
+    if($("#cate").val()!=localStorage.getItem("cate")){
+        post("",{"pageNum":parseInt(localStorage.getItem("pageNum")),"cate":localStorage.getItem("cate")});
     }
     $("#submit").click(function(){
         if($("#page").val()){
