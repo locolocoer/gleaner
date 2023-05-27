@@ -27,6 +27,21 @@ if ($this->user->hasLogin()) {
 }
 $num = count($thumbs);
 // shuffle($thumbs);
+if($this->user->hasLogin()){
+$catearray = array("all"=>"全部","zqq"=>"仲秋秋","Nimo"=>"Nimo","lsy"=>"刘苏颖","minladuizhang"=>"敏啦队长",);
+}else{
+    $catearray = array("all"=>"全部");
+}
+if ($_POST['cate']!=null&&$_POST['cate']!='all'){
+for($i=0;$i<$num;$i++){
+    if(strpos($thumbs[$i],$_POST["cate"])===false){
+       unset($thumbs[$i]); 
+    }
+}
+}
+$thumbs = array_values($thumbs);
+$num = count($thumbs);
+
 if (!isset($_POST["pageNum"])) {
     $pageNum = 1;
 } else {
@@ -48,7 +63,19 @@ if ($end >= $num) {
             <?php echo $num; ?>张图片,当前
         </div>
         <form method="post">
-            <input type="number" name="pageNum" id="page" min="1" max="<?php echo ceil($num / 100); ?>"
+        <select name="cate" id="cate" class="cate">
+            <?php   
+              foreach($catearray as $key => $value){
+                if ($_POST["cate"]==$key){
+                  echo "<option value=".$key." selected>".$value."</option>";
+                }else{
+                  echo "<option value=".$key.">".$value."</option>";
+                }
+                
+              }
+            ?>
+        </select>
+            <input type="number" name="pageNum" id="page" min="1" max="<?php if(ceil($num / 100)){echo ceil($num / 100);}else{echo 1;} ?>"
                 placeholder="<?php echo $pageNum; ?>" required="required" onmousewheel="return false;" />
 
             <button type="submit" id="submit">/
@@ -74,6 +101,14 @@ if ($end >= $num) {
         }
         // console.log($("#page").val())
     })
+
+    $("#submit").click(function(){
+        if($("#cate").val()){
+              localStorage.setItem("cate",$("#cate").val());
+        }
+        console.log($("#cate").val())
+    })
+
     $(document).ready(function () {
         $("#submit").hover(function () {
             $("#submit").html("转到");
@@ -126,7 +161,7 @@ if ($end >= $num) {
         $(document).ready(function () {
             $("#prevPage").click(function () {
                 if (<?php echo $pageNum ?> > 1) {
-                    post("", { "pageNum":<?php echo $pageNum - 1; ?>});
+                    post("",{"pageNum":<?php echo $pageNum - 1; ?>,"cate":localStorage.getItem("cate")});
                     localStorage.setItem("pageNum","<?php echo $pageNum - 1; ?>");
                 }
             });
@@ -135,7 +170,7 @@ if ($end >= $num) {
 
             $("#nextPage").click(function () {
                 if (<?php echo $pageNum ?> < <?php echo ceil($num / 100) ?>) {
-                    post("", { "pageNum":<?php echo $pageNum + 1; ?>});
+                    post("",{"pageNum":<?php echo $pageNum + 1; ?>,"cate":localStorage.getItem("cate")});
                     localStorage.setItem("pageNum","<?php echo $pageNum + 1; ?>");
                 }
             });
