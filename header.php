@@ -94,9 +94,9 @@
                     localStorage.setItem("nightMode", night);
                     if (night) {
                         $("body").addClass("dark");
-                        $("#feng2logo").attr('src', "<?php $this->options->themeUrl('./assets/img/fdxlogow.png');?>");
+                        $("#feng2logo").attr('src', "<?php $this->options->themeUrl('./assets/img/fdxlogow2.png');?>");
                         <?php if(!$this->is('index')): ?>
-                        $("#fenglogo").attr('src', "<?php $this->options->themeUrl('./assets/img/fdxlogow.png');?>");
+                        $("#fenglogo").attr('src', "<?php $this->options->themeUrl('./assets/img/fdxlogow2.png');?>");
                         <?php endif;?>
                     } else {
                         $("body").removeClass("dark");
@@ -120,10 +120,11 @@
                     if($(elem).attr("href")=="<?php echo $totalLink;?>"){
                         elem.setAttribute("onclick","return false;");
                         elem.addEventListener("click",function(evt){
+                            evt.preventDefault();
                             if(localStorage.getItem("pageNum")===null){
                                 post("<?php echo $totalLink;?>",{ "pageNum":"1"});
                             }else{
-                                post("<?php echo $totalLink;?>",{ "pageNum":localStorage.getItem("pageNum")});
+                                post("<?php echo $totalLink;?>",{ "pageNum":localStorage.getItem("pageNum"),"cate":localStorage.getItem("cate")});
                             }
                         })
                     }
@@ -249,7 +250,7 @@
                     <div class="wrap">
                         <div class="wp-none">
                             <img id="fenglogo" src="<?php if ($this->is('index')) {
-                                $this->options->themeUrl('./assets/img/fdxlogow.png');
+                                $this->options->themeUrl('./assets/img/fdxlogow2.png');
                             } else {
                                 $this->options->bcool_mylogo();
                             } ?>" alt="" class="mylogo">

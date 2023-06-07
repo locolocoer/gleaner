@@ -27,24 +27,48 @@ if ($this->user->hasLogin()) {
 }
 $num = count($thumbs);
 // shuffle($thumbs);
-echo $_POST["cate"];
+//echo $_POST["cate"];
+
+
 if($this->user->hasLogin()){
-$catearray = array("all"=>"全部","zqq"=>"仲秋秋","Nimo"=>"Nimo","lsy"=>"刘苏颖","minladuizhang"=>"敏啦队长",);
+    $catearray = array("all"=>"全部","zqq"=>"仲秋秋","Nimo"=>"Nimo","lsy"=>"刘苏颖","minladuizhang"=>"敏啦队长","yuwen"=>"于雯","nana"=>"Nana","dm"=>"动漫");
 }else{
     $catearray = array("all"=>"全部");
 }
-if ($_POST['cate']!=null&&$_POST['cate']!='all'){
-for($i=0;$i<$num;$i++){
-    if(strpos($thumbs[$i],$_POST["cate"])===false){
-       unset($thumbs[$i]); 
+
+$catenum = array("all"=>$num);
+foreach($catearray as $key=>$value){
+    if ($key!="all"){
+        $catenum[$key]=0;
     }
 }
+
+for($i=0;$i<$num;$i++){
+    foreach ($catenum as $key=>$value){
+        if ($key!="all"){
+            if (strpos($thumbs[$i],$key)!==false){
+                $catenum[$key]++;
+            }
+        }
+    }
+}
+//print_r($catenum);
+if ($_POST['cate']!=null&&$_POST['cate']!='all'){
+    for($i=0;$i<$num;$i++){
+        if(strpos($thumbs[$i],$_POST["cate"])===false){
+            unset($thumbs[$i]); 
+        }
+    }
 }
 $thumbs = array_values($thumbs);
 $num = count($thumbs);
-
+$init_flag=true;
+if(!isset($_POST["pageNum"])||!isset($_POST["cate"])){
+    $init_flag=false;
+}
 if (!isset($_POST["pageNum"])) {
     $pageNum = 1;
+   
 } else {
     $pageNum = intval($_POST["pageNum"]);
 }
@@ -54,10 +78,25 @@ if ($end >= $num) {
     $end = $num - 1;
 }
 ?>
+
 <script>
-
-
+var catenum = {<?php
+    foreach ($catenum as $key=>$value){
+        echo $key.":".$value.",";
+    }
+?>};
+var hasLogin = <?php if($this->user->hasLogin()){
+    echo "true";
+}else{
+    echo "false";
+} ?>;
+var init_page = <?php if($init_flag){
+    echo "false";
+}else{
+    echo "true";
+} ?>;
 </script>
+
 <div class="pageNav">
     <div class="centerbox">
         <div class="discription">共计
@@ -68,9 +107,9 @@ if ($end >= $num) {
             <?php   
               foreach($catearray as $key => $value){
                 if ($_POST["cate"]==$key){
-                  echo "<option value=".$key." selected>".$value."</option>";
+                    echo "<option value=".$key." selected>".$value."</option>";
                 }else{
-                  echo "<option value=".$key.">".$value."</option>";
+                    echo "<option value=".$key.">".$value."</option>";
                 }
                 
               }
@@ -91,27 +130,24 @@ if ($end >= $num) {
     input.addEventListener("wheel", function (event) {
         event.preventDefault();
     });
-    if($("#page").attr("placeholder")!=localStorage.getItem("pageNum")&&localStorage.getItem("pageNum")!=null){
-        post("",{"pageNum":parseInt(localStorage.getItem("pageNum")),"cate":localStorage.getItem("cate")});
-    }
-    if($("#cate").val()!=localStorage.getItem("cate")){
-        post("",{"pageNum":parseInt(localStorage.getItem("pageNum")),"cate":localStorage.getItem("cate")});
-    }
+    
+    
     $("#submit").click(function(){
         if($("#page").val()){
-            if(parseInt($("#page").val()) > 0 && parseInt($("#page").val()) <= <?php echo ceil($num / 100) ?>){
+            if(parseInt($("#page").val()) > 0 && parseInt($("#page").val()) <= Math.ceil(catenum[$("#cate").val()]/100)){
                 localStorage.setItem("pageNum",parseInt($("#page").val()));
             }
         }
         // console.log($("#page").val())
-    })
-
-    $("#submit").click(function(){
         if($("#cate").val()){
               localStorage.setItem("cate",$("#cate").val());
         }
         console.log($("#cate").val())
     })
+
+    // $("#submit").click(function(){
+        
+    // })
 
     $(document).ready(function () {
         $("#submit").hover(function () {
@@ -119,9 +155,25 @@ if ($end >= $num) {
         }, function () {
             $("#submit").html("/<?php echo ceil($num / 100); ?>页");
         });
+    //     if(){
+    //     post("",{"pageNum":parseInt(localStorage.getItem("pageNum")),"cate":localStorage.getItem("cate")});
+    // }
+    if(init_page||($("#page").attr("placeholder")!=localStorage.getItem("pageNum")&&localStorage.getItem("pageNum")!=null)||($("#cate").val()!=localStorage.getItem("cate")&&localStorage.getItem("cate")!=null&&hasLogin)){
+        post("",{"pageNum":parseInt(localStorage.getItem("pageNum")),"cate":localStorage.getItem("cate")});
+    }
+    });
+    $(document).ready(function () {
+        $("#cate").change(function(e){
+            // console.log(e.target.value);
+            // console.log(catenum[e.target.value]);
+            // console.log($("#page").attr("max"));
+            $("#page").attr("max",Math.ceil(catenum[e.target.value]/100));
+            $("#submit").html("/"+Math.ceil(catenum[e.target.value]/100)+"页");
+            //console.log($(".discription"))
+            $(".discription").html("共计"+catenum[e.target.value]+"张图片,当前")
+        })
 
     });
-
 </script>
 <br>
 <div
@@ -132,11 +184,16 @@ if ($end >= $num) {
         <div class="wrap">
             <div class="wrap_float grid">
                 <div class="portfolio">
-
+                    <?php if($init_flag): ?>
                     <?php for ($i = $begin; $i <= $end; $i++): ?>
                         <?php 
                         if (substr($thumbs[$i],0,4)!="http"){
-                            $thumbs[$i]="https://www.flyingfry.cn/usr/uploads/" . $thumbs[$i];
+                            if($this->options->bcool_select_origin){
+                                $thumbs[$i]="https://www.flyingfry.cn/usr/uploads/" . $thumbs[$i];
+                            }else{
+                                $thumbs[$i]="https://pic.flyingfry.cn/" . $thumbs[$i]. $this->options->bcool_select_origin_template;
+                            }
+                            
                         }
                             ?>
                         <a href="<?php echo $thumbs[$i]; ?>" data-fancybox="images">
@@ -151,7 +208,7 @@ if ($end >= $num) {
                         </div>
                         </a>
                     <?php endfor; ?>
-
+                    <?php endif; ?>
                 </div>
 
             </div>

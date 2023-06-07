@@ -119,7 +119,13 @@ HTML;
         $bcool_menu->setAttribute('class', 'bearui_content bearui_global');
         $form->addInput($bcool_menu);
 
+        $bcool_select_origin = new Typecho_Widget_Helper_Form_Element_Radio('bcool_select_origin', array(false => _t('使用火山引擎 '), true => _t(' 使用网站本地')), false, _t('图片库加载源'), _t("默认使用火山引擎 "));
+        $bcool_select_origin->setAttribute('class', 'bearui_content bearui_global');
+        $form->addInput($bcool_select_origin);
 
+        $bcool_select_origin_template = new Typecho_Widget_Helper_Form_Element_Text('bcool_select_origin_template', null, _t("~tplv-ocfscsxaet-image.image"), '火山引擎模板', '请填入模板,默认：~tplv-ocfscsxaet-image.image');
+        $bcool_select_origin_template->setAttribute('class', 'bearui_content bearui_global');
+        $form->addInput($bcool_select_origin_template);
         $Html = <<<HTML
 <div class="ui piled segment">
     <h2 class="ui icon header aligned center ">
