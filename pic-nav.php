@@ -34,7 +34,7 @@ $num = count($thumbs);
 //Signer::main();
 
 if($this->user->hasLogin()){
-    $catearray = array("all"=>"全部","zqq"=>"仲秋秋","Nimo"=>"Nimo","lsy"=>"刘苏颖","minladuizhang"=>"敏啦队长","yuwen"=>"于雯","nana"=>"Nana","dm"=>"动漫");
+    $catearray = array("all"=>"全部","zqq"=>"仲秋秋","Nimo"=>"Nimo","lsy"=>"刘苏颖","minladuizhang"=>"敏啦队长","yuwen"=>"于雯","nana"=>"Nana","linyun"=>"林允","dm"=>"动漫");
 }else{
     $catearray = array("all"=>"全部");
 }
