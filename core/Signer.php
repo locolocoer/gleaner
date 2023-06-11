@@ -62,7 +62,7 @@ class Signer
     private function run($path,$type)
     {
         $domain = "pic.flyingfry.cn";
-        $key = "Fightfry678";
+        $key = "";
         //$path = "/dm/dm282.jpg~tplv-ocfscsxaet-image.image";
         $randint = rand(0,10000);
         if($type=="A"){
