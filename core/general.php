@@ -88,7 +88,9 @@ function thumb($obj,$hasLogin)
             if($options->bcool_select_origin){
                 $thumb = "https://www.flyingfry.cn/usr/uploads/" . $thumb;
             }else{
-                $thumb = "https://pic.flyingfry.cn/" . $thumb. $options->bcool_select_origin_template;
+                $thumb = "/" . $thumb. $options->bcool_select_origin_template;
+                require_once("../Signer.php");
+                $thumb = Signer::main($thumb);
             }
         }
     } elseif (isset($attach->isImage) && $attach->isImage == 1) {

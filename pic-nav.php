@@ -29,6 +29,9 @@ $num = count($thumbs);
 // shuffle($thumbs);
 //echo $_POST["cate"];
 
+//use Modules\Auth\Signer;
+
+//Signer::main();
 
 if($this->user->hasLogin()){
     $catearray = array("all"=>"全部","zqq"=>"仲秋秋","Nimo"=>"Nimo","lsy"=>"刘苏颖","minladuizhang"=>"敏啦队长","yuwen"=>"于雯","nana"=>"Nana","dm"=>"动漫");
@@ -191,7 +194,9 @@ var init_page = <?php if($init_flag){
                             if($this->options->bcool_select_origin){
                                 $thumbs[$i]="https://www.flyingfry.cn/usr/uploads/" . $thumbs[$i];
                             }else{
-                                $thumbs[$i]="https://pic.flyingfry.cn/" . $thumbs[$i]. $this->options->bcool_select_origin_template;
+                                $thumbs[$i]="/".$thumbs[$i]. $this->options->bcool_select_origin_template;
+                                require_once("Signer.php");
+                                $thumbs[$i]=Signer::main($thumbs[$i]);
                             }
                             
                         }
@@ -201,7 +206,9 @@ var init_page = <?php if($init_flag){
                             <div class="content">
                                 <div class="thumb clearbg">
                                     <img class="lazy" src="<?php $this->options->themeUrl('./assets/img/loading.gif'); ?>"
-                                        data-src="<?php echo $thumbs[$i]; ?>"
+                                        data-src="<?php 
+                                        
+                                        echo $thumbs[$i]; ?>"
                                         error-src="<?php $this->options->themeUrl('./assets/img/404.jpg'); ?>" alt="" />
                                 </div>
                             </div>
