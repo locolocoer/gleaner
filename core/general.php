@@ -89,7 +89,7 @@ function thumb($obj,$hasLogin)
                 $thumb = "https://www.flyingfry.cn/usr/uploads/" . $thumb;
             }else{
                 $thumb = "/" . $thumb. $options->bcool_select_origin_template;
-                require_once("../Signer.php");
+                require_once("Signer.php");
                 $thumb = Signer::main($thumb);
             }
         }
