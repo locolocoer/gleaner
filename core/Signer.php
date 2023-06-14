@@ -73,9 +73,7 @@ class Signer
             return $this->authC($domain, $path, $key);
         }elseif($type=="D"){
             return $this->authD($domain, $path, $key, "sign", false, "time");
-        }elseif($type=="E"){
-            return $this->authD($domain, $path, $key, "sign", true, "time");
-        }   
+        } 
     }
 
     public static function main($path,$type="A") {
