@@ -85,12 +85,14 @@ function thumb($obj,$hasLogin)
         $thumb = $thumbs[rand(0, count($thumbs) - 1)];
         
         if (substr($thumb,0,4)!="http"){
-            if($options->bcool_select_origin){
+            if($options->bcool_select_originn===0||$options->bcool_select_origin=="default"){
                 $thumb = "https://www.flyingfry.cn/usr/uploads/" . $thumb;
-            }else{
+            }elseif($options->bcool_select_origin==="tiktok"){
                 $thumb = "/" . $thumb. $options->bcool_select_origin_template;
                 require_once("Signer.php");
                 $thumb = Signer::main($thumb);
+            }else{
+                $thumb ='https://cdn.jsdelivr.net/gh/locolocoer/github_backup@master/'. $thumb;
             }
         }
     } elseif (isset($attach->isImage) && $attach->isImage == 1) {

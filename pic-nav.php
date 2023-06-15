@@ -32,7 +32,6 @@ $num = count($thumbs);
 //use Modules\Auth\Signer;
 
 //Signer::main();
-
 if($this->user->hasLogin()){
     $catearray = array("all"=>"全部","zqq"=>"仲秋秋","Nimo"=>"Nimo","lsy"=>"刘苏颖","minladuizhang"=>"敏啦队长","yuwen"=>"于雯","nana"=>"Nana","linyun"=>"林允","dm"=>"动漫");
 }else{
@@ -191,12 +190,14 @@ var init_page = <?php if($init_flag){
                     <?php for ($i = $begin; $i <= $end; $i++): ?>
                         <?php 
                         if (substr($thumbs[$i],0,4)!="http"){
-                            if($this->options->bcool_select_origin){
+                            if($this->options->bcool_select_origin===0||$this->options->bcool_select_origin=="default"){
                                 $thumbs[$i]="https://www.flyingfry.cn/usr/uploads/" . $thumbs[$i];
-                            }else{
+                            }elseif($this->options->bcool_select_origin==="tiktok"){
                                 $thumbs[$i]="/".$thumbs[$i]. $this->options->bcool_select_origin_template;
                                 require_once("Signer.php");
                                 $thumbs[$i]=Signer::main($thumbs[$i]);
+                            }else{
+                                $thumbs[$i]='https://cdn.jsdelivr.net/gh/locolocoer/github_backup@master/'. $thumbs[$i];
                             }
                             
                         }

@@ -119,7 +119,17 @@ HTML;
         $bcool_menu->setAttribute('class', 'bearui_content bearui_global');
         $form->addInput($bcool_menu);
 
-        $bcool_select_origin = new Typecho_Widget_Helper_Form_Element_Radio('bcool_select_origin', array(false => _t('使用火山引擎 '), true => _t(' 使用网站本地')), false, _t('图片库加载源'), _t("默认使用火山引擎 "));
+        $bcool_select_origin = new Typecho_Widget_Helper_Form_Element_Select(
+            'bcool_select_origin',
+            array(
+                'default' => '使用本地服务',
+                'tiktok' => '使用火山引擎',
+                'github' => '使用github+jsdevliver',
+            ),
+            'on',
+            '选择图片加载路径',
+            ''
+        );
         $bcool_select_origin->setAttribute('class', 'bearui_content bearui_global');
         $form->addInput($bcool_select_origin);
 
