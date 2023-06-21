@@ -32,8 +32,15 @@ $num = count($thumbs);
 //use Modules\Auth\Signer;
 
 //Signer::main();
+
 if($this->user->hasLogin()){
-    $catearray = array("all"=>"全部","zqq"=>"仲秋秋","Nimo"=>"Nimo","lsy"=>"刘苏颖","minladuizhang"=>"敏啦队长","yuwen"=>"于雯","nana"=>"Nana","linyun"=>"林允","dm"=>"动漫");
+    //$catearray = array("all"=>"全部","zqq"=>"仲秋秋","Nimo"=>"Nimo","lsy"=>"刘苏颖","minladuizhang"=>"敏啦队长","yuwen"=>"于雯","nana"=>"Nana","linyun"=>"林允","dm"=>"动漫");
+    $select_arr = explode(";",$options->bcool_show);
+    $catearray = array();
+    foreach($select_arr as $i){
+        $temp = explode(",",$i);
+        $catearray[$temp[0]]=$temp[1];
+    }
 }else{
     $catearray = array("all"=>"全部");
 }

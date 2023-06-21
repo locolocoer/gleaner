@@ -299,6 +299,10 @@ HTML;
         $public_bcool_cover->setAttribute('class', 'bearui_content bearui_other');
         $form->addInput($public_bcool_cover);
 
+        $bcool_show = new Typecho_Widget_Helper_Form_Element_Textarea('bcool_show', null, 'all,全部;', '设置图片展示页筛选选项', '');
+        $bcool_show->setAttribute('class', 'bearui_content bearui_other');
+        $form->addInput($bcool_show);
+
         $bcool_Gravatar = new Typecho_Widget_Helper_Form_Element_Select('bcool_Gravatar', array('1' => 'Gravatar官方源', '2' => 'LOLI.TOP*Gravatar镜像源', '3' => 'V2EX*Gravatar镜像源', '4' => 'LOLI.NET*Gravatar镜像源', '5' => '极客族*Gravatar镜像源', '6' => '七牛*Gravatar镜像源'), '2', 'Gravatar源选择', '因Gravatar官方在中国大陆地区被Q，导致在中国大陆访问使用Gravatar的站点时头像不显示,这里支持您自主选择合适的源<br>本功能适配QQ,当填写的邮箱为QQ邮箱时则显示QQ头像');
         $bcool_Gravatar->setAttribute('class', 'bearui_content bearui_other');
         $form->addInput($bcool_Gravatar->multiMode());
