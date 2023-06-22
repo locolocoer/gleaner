@@ -83,7 +83,7 @@ function thumb($obj,$hasLogin)
         $thumb = $cover;
     } else if ($options->bcool_cover && count($thumbs) > 0) {
         $num = count($thumbs);
-        if ($options->bcool_select_show!=null or $options->bcool_select_show!='all'){
+        if ($options->bcool_select_show!=null && $options->bcool_select_show!='all'){
             for($i=0;$i<$num;$i++){
                 if(strpos($thumbs[$i],$options->bcool_select_show)===false){
                     unset($thumbs[$i]); 
