@@ -303,6 +303,26 @@ HTML;
         $bcool_show->setAttribute('class', 'bearui_content bearui_other');
         $form->addInput($bcool_show);
 
+
+        $options = Typecho_Widget::widget('Widget_Options');
+        //echo $options->bcool_show;
+        $select_arr = explode(";",$options->bcool_show);
+        $catearray = array();
+        foreach($select_arr as $i){
+            $temp = explode(",",$i);
+            $catearray[$temp[0]]=$temp[1];
+        }
+
+        $bcool_select_show = new Typecho_Widget_Helper_Form_Element_Select(
+            'bcool_select_show',
+            $catearray,
+            'off',
+            '选择一款显示动画',
+            '开启后，首页等位置都将显示此动画'
+        );
+        $bcool_select_show->setAttribute('class', 'bearui_content bearui_other');
+        $form->addInput($bcool_select_show->multiMode());
+
         $bcool_Gravatar = new Typecho_Widget_Helper_Form_Element_Select('bcool_Gravatar', array('1' => 'Gravatar官方源', '2' => 'LOLI.TOP*Gravatar镜像源', '3' => 'V2EX*Gravatar镜像源', '4' => 'LOLI.NET*Gravatar镜像源', '5' => '极客族*Gravatar镜像源', '6' => '七牛*Gravatar镜像源'), '2', 'Gravatar源选择', '因Gravatar官方在中国大陆地区被Q，导致在中国大陆访问使用Gravatar的站点时头像不显示,这里支持您自主选择合适的源<br>本功能适配QQ,当填写的邮箱为QQ邮箱时则显示QQ头像');
         $bcool_Gravatar->setAttribute('class', 'bearui_content bearui_other');
         $form->addInput($bcool_Gravatar->multiMode());
