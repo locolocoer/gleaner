@@ -317,8 +317,8 @@ HTML;
             'bcool_select_show',
             $catearray,
             'off',
-            '选择一款显示动画',
-            '开启后，首页等位置都将显示此动画'
+            '选择文章预览图分类',
+            '开启后，文章预览图将依据此选项'
         );
         $bcool_select_show->setAttribute('class', 'bearui_content bearui_other');
         $form->addInput($bcool_select_show->multiMode());
