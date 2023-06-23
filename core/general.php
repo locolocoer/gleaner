@@ -103,7 +103,7 @@ function thumb($obj,$hasLogin)
                 require_once("Signer.php");
                 $thumb = Signer::main($thumb);
             }else{
-                $thumb ='https://cdn.jsdelivr.net/gh/locolocoer/github_backup@master/'. $thumb;
+                $thumb ='https://gcore.jsdelivr.net/gh/locolocoer/github_backup@master/'. $thumb;
             }
         }
     } elseif (isset($attach->isImage) && $attach->isImage == 1) {

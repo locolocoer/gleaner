@@ -204,7 +204,7 @@ var init_page = <?php if($init_flag){
                                 require_once("Signer.php");
                                 $thumbs[$i]=Signer::main($thumbs[$i]);
                             }else{
-                                $thumbs[$i]='https://cdn.jsdelivr.net/gh/locolocoer/github_backup@master/'. $thumbs[$i];
+                                $thumbs[$i]='https://gcore.jsdelivr.net/gh/locolocoer/github_backup@master/'. $thumbs[$i];
                             }
                             
                         }
