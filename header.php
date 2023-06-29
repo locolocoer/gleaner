@@ -25,8 +25,9 @@
 
     <?php if ($this->options->debug_mode): ?>
 
+        <link rel="stylesheet" href="<?php $this->options->themeUrl('./assets/css/pic_page.css'); ?>">
+        <script src="<?php $this->options->themeUrl('./assets/js/pic_page.js'); ?>"></script>
         <link rel="stylesheet" href="<?php $this->options->themeUrl('./assets/iconfonts/iconfont.css'); ?>">
-
 
         <link href="<?php $this->options->themeUrl('./assets/css/styles.min.css'); ?>" type="text/css" rel="stylesheet" />
         <link href="<?php $this->options->themeUrl('./assets/css/third/animate.min.css'); ?>" type="text/css"
