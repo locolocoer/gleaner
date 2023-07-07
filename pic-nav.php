@@ -62,10 +62,12 @@ for($i=0;$i<$num;$i++){
     }
 }
 //print_r($catenum);
-if ($_POST['cate']!=null&&$_POST['cate']!='all'){
-    for($i=0;$i<$num;$i++){
-        if(strpos($thumbs[$i],$_POST["cate"])===false){
-            unset($thumbs[$i]); 
+if($this->user->hasLogin()){
+    if ($_POST['cate']!=null&&$_POST['cate']!='all'){
+        for($i=0;$i<$num;$i++){
+            if(strpos($thumbs[$i],$_POST["cate"])===false){
+                unset($thumbs[$i]); 
+            }
         }
     }
 }
