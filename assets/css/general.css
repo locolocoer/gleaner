@@ -170,6 +170,7 @@ body.pop-up-open {
   position: relative;
   z-index: 1;
   background: #1d1d1d;
+  height: 1600px;
 }
 .content-container.page--move .content-container-wrap {
   transform: translateY(470px) scale(0.95);
