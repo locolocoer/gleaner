@@ -52,7 +52,7 @@
             rel="stylesheet" />
         <link href="//lf9-cdn-tos.bytecdntp.com/cdn/expire-1-M/fancybox/3.5.7/jquery.fancybox.min.css" type="text/css"
             rel="stylesheet" />
-        <link href="//fastly.jsdelivr.net/gh/locolocoer/gleanear@flyingfry/assets/css/styles.min.css" type="text/css"
+        <link href="//cdn.jsdelivr.net/gh/locolocoer/gleanear@flyingfry/assets/css/styles.min.css" type="text/css"
             rel="stylesheet" />
         <link href="//lf6-cdn-tos.bytecdntp.com/cdn/expire-1-M/bootstrap/5.0.0/css/bootstrap-grid.min.css" type="text/css"
             rel="stylesheet" />

@@ -125,6 +125,7 @@ HTML;
                 'default' => '使用本地服务',
                 'tiktok' => '使用火山引擎',
                 'github' => '使用github+jsdevliver',
+                '123cloud' => '使用123cloud'
             ),
             'on',
             '选择图片加载路径',
@@ -146,6 +147,155 @@ HTML;
         </div>
     </h2>
 </div>
+HTML;
+
+        $layout = new Typecho_Widget_Helper_Layout();
+        $layout->html(_t($Html));
+        $layout->setAttribute('class', 'bearui_content bearui_global');
+        $form->addItem($layout);
+
+        $bcool_avatar = new Typecho_Widget_Helper_Form_Element_Text('bcool_avatar', null, '', '首页头像', '首页头像地址');
+        $bcool_avatar->setAttribute('class', 'bearui_content bearui_global');
+        $form->addInput($bcool_avatar);
+
+        $bcool_mylogo = new Typecho_Widget_Helper_Form_Element_Text('bcool_mylogo', null, '', '首页logo', '首页logo地址');
+        $bcool_mylogo->setAttribute('class', 'bearui_content bearui_global');
+        $form->addInput($bcool_mylogo);
+
+        $bcool_nickname = new Typecho_Widget_Helper_Form_Element_Text('bcool_nickname', null, $options->title, '首页昵称', '如为空默认显示网站标题');
+        $bcool_nickname->setAttribute('class', 'bearui_content bearui_global');
+        $form->addInput($bcool_nickname);
+
+        $bcool_slogan = new Typecho_Widget_Helper_Form_Element_Text('bcool_slogan', null, '黄花仍在，朱颜未衰，正好忘怀', '首页slogan', '随便说点什么，座右铭、金句之类');
+        $bcool_slogan->setAttribute('class', 'bearui_content bearui_global');
+        $form->addInput($bcool_slogan);
+
+        $bcool_app = new Typecho_Widget_Helper_Form_Element_Textarea('bcool_app', null, '', '首页App展示', '请填入需要在首页展示的应用信息<br>格式：名称|图标名|链接，每行一条，前后不留空格<br>示例：Github|fa-brands fa-github|https://github.com/fordes123<br>图标为 FontAwsome6.2 免费图标全称，参考：https://fontawesome.com/search?m=free');
+        $bcool_app->setAttribute('class', 'bearui_content bearui_global');
+        $form->addInput($bcool_app);
+
+
+        $Html = <<<HTML
+<div class="ui piled segment">
+    <h2 class="ui icon header aligned center ">
+    <i class="hockey puck icon"></i>
+        <div class="content">
+            底部设置
+            <div class="sub header">设置ICP备案号、自定义代码等信息</div>
+        </div>
+    </h2>
+</div>
+HTML;
+
+        $layout = new Typecho_Widget_Helper_Layout();
+        $layout->html(_t($Html));
+        $layout->setAttribute('class', 'bearui_content bearui_global');
+        $form->addItem($layout);
+
+        $bcool_icp = new Typecho_Widget_Helper_Form_Element_Text('bcool_icp', null, '', 'ICP备案号', '请在这里填入站点ICP备案号');
+        $bcool_icp->setAttribute('class', 'bearui_content bearui_global');
+        $form->addInput($bcool_icp);
+
+        $Html = <<<HTML
+<div class="ui piled segment">
+    <h2 class="ui icon header aligned center ">
+        <i class="moon icon"></i>
+        <div class="content">
+            颜色设置
+            <div class="sub header">设置深色/浅色模式相关功能</div>
+        </div>
+    </h2>
+</div>
+HTML;
+HTML;
+
+        $layout = new Typecho_Widget_Helper_Layout();
+        $layout->html(_t($Html));
+        $layout->setAttribute('class', 'bearui_content bearui_global');
+        $form->addItem($layout);
+
+        $bcool_avatar = new Typecho_Widget_Helper_Form_Element_Text('bcool_avatar', null, '', '首页头像', '首页头像地址');
+        $bcool_avatar->setAttribute('class', 'bearui_content bearui_global');
+        $form->addInput($bcool_avatar);
+
+        $bcool_mylogo = new Typecho_Widget_Helper_Form_Element_Text('bcool_mylogo', null, '', '首页logo', '首页logo地址');
+        $bcool_mylogo->setAttribute('class', 'bearui_content bearui_global');
+        $form->addInput($bcool_mylogo);
+
+        $bcool_nickname = new Typecho_Widget_Helper_Form_Element_Text('bcool_nickname', null, $options->title, '首页昵称', '如为空默认显示网站标题');
+        $bcool_nickname->setAttribute('class', 'bearui_content bearui_global');
+        $form->addInput($bcool_nickname);
+
+        $bcool_slogan = new Typecho_Widget_Helper_Form_Element_Text('bcool_slogan', null, '黄花仍在，朱颜未衰，正好忘怀', '首页slogan', '随便说点什么，座右铭、金句之类');
+        $bcool_slogan->setAttribute('class', 'bearui_content bearui_global');
+        $form->addInput($bcool_slogan);
+
+        $bcool_app = new Typecho_Widget_Helper_Form_Element_Textarea('bcool_app', null, '', '首页App展示', '请填入需要在首页展示的应用信息<br>格式：名称|图标名|链接，每行一条，前后不留空格<br>示例：Github|fa-brands fa-github|https://github.com/fordes123<br>图标为 FontAwsome6.2 免费图标全称，参考：https://fontawesome.com/search?m=free');
+        $bcool_app->setAttribute('class', 'bearui_content bearui_global');
+        $form->addInput($bcool_app);
+
+
+        $Html = <<<HTML
+<div class="ui piled segment">
+    <h2 class="ui icon header aligned center ">
+    <i class="hockey puck icon"></i>
+        <div class="content">
+            底部设置
+            <div class="sub header">设置ICP备案号、自定义代码等信息</div>
+        </div>
+    </h2>
+</div>
+HTML;
+
+        $layout = new Typecho_Widget_Helper_Layout();
+        $layout->html(_t($Html));
+        $layout->setAttribute('class', 'bearui_content bearui_global');
+        $form->addItem($layout);
+
+        $bcool_icp = new Typecho_Widget_Helper_Form_Element_Text('bcool_icp', null, '', 'ICP备案号', '请在这里填入站点ICP备案号');
+        $bcool_icp->setAttribute('class', 'bearui_content bearui_global');
+        $form->addInput($bcool_icp);
+
+        $Html = <<<HTML
+<div class="ui piled segment">
+    <h2 class="ui icon header aligned center ">
+        <i class="moon icon"></i>
+        <div class="content">
+            颜色设置
+            <div class="sub header">设置深色/浅色模式相关功能</div>
+        </div>
+    </h2>
+</div>
+HTML;
+        $layout = new Typecho_Widget_Helper_Layout();
+        $layout->html(_t($Html));
+        $layout->setAttribute('class', 'bearui_content bearui_high');
+        $form->addItem($layout);
+
+        $bcool_darkmode = new Typecho_Widget_Helper_Form_Element_Radio('bcool_darkmode', array(true => _t('自动跟随系统 '), false => _t(' 手动开关切换')), true, _t('深/浅色切换模式'), _t("跟随系统将检测系统深色/浅色主题模式自动切换，手动则展示开关"));
+        $bcool_darkmode->setAttribute('class', 'bearui_content bearui_high');
+        $form->addInput($bcool_darkmode);
+
+        $bcool_darkcolor = new Typecho_Widget_Helper_Form_Element_Text('bcool_darkcolor', null, 'linear-gradient(0deg,#ffa17f,#00223e)', '深色模式首页背景色', '建议使用渐变色，如：linear-gradient(0deg,#ffa17f,#00223e)');
+        $bcool_darkcolor->setAttribute('class', 'bearui_content bearui_high');
+        $form->addInput($bcool_darkcolor);
+
+        $bcool_lightcolor = new Typecho_Widget_Helper_Form_Element_Text('bcool_lightcolor', null, 'linear-gradient(0deg, #4584b4, #1e4877)', '浅色模式首页背景色', '建议使用渐变色，如：linear-gradient(0deg, #4584b4, #1e4877)');
+        $bcool_lightcolor->setAttribute('class', 'bearui_content bearui_high');
+        $form->addInput($bcool_lightcolor);
+
+        $Html = <<<HTML
+<div class="ui piled segment">
+    <h2 class="ui icon header aligned center ">
+        <i class="ban icon"></i>
+        <div class="content">
+            评论过滤
+            <div class="sub header">默认强制性过滤全空格评论、包含XSS危险内容评论，其余需过滤内容您可以通过以下项进行设置。</div>
+        </div>
+    </h2>
+</div>
+
+HTML;
 HTML;
 
         $layout = new Typecho_Widget_Helper_Layout();
@@ -299,20 +449,32 @@ HTML;
         $public_bcool_cover->setAttribute('class', 'bearui_content bearui_other');
         $form->addInput($public_bcool_cover);
 
-        $bcool_show = new Typecho_Widget_Helper_Form_Element_Textarea('bcool_show', null, 'all,全部;', '设置图片展示页筛选选项', '');
+        $bcool_show = new Typecho_Widget_Helper_Form_Element_Text('bcool_show', null, 'all,全部;else,不显示', '设置图片展示页筛选选项', '');
         $bcool_show->setAttribute('class', 'bearui_content bearui_other');
         $form->addInput($bcool_show);
 
 
         $options = Typecho_Widget::widget('Widget_Options');
-        //echo $options->bcool_show;
+        // echo $options->bcool_show;
         $select_arr = explode(";",$options->bcool_show);
-        $catearray = array();
+        $catearray = array(
+            'off' => '不显示',
+            'all' => '全部'
+        );
+        // if(!empty($select_arr)){
+        //     foreach($select_arr as $i){
+        //         $temp = explode(",",$i);
+        //         $catearray[$temp[0]]=$temp[1];
+        //     }   
+        // }
+
         foreach($select_arr as $i){
             $temp = explode(",",$i);
-            $catearray[$temp[0]]=$temp[1];
-        }
-
+            if (count($temp) == 2) {
+                $catearray[$temp[0]] = $temp[1];
+            }
+        } 
+        
         $bcool_select_show = new Typecho_Widget_Helper_Form_Element_Select(
             'bcool_select_show',
             $catearray,

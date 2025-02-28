@@ -12,19 +12,21 @@ $this->need('header.php'); ?>
 <?php
 $options = Typecho_Widget::widget('Widget_Options');
 $pri_thumbs = explode("|", $options->bcool_cover); /*获取文章封面*/
+
 $pub_thumbs = explode("|", $options->public_bcool_cover);
 if ($this->user->hasLogin()) {
     if($options->bcool_cover!=""&&$options->public_bcool_cover!=""){
         $thumbs = array_merge($pri_thumbs, $pub_thumbs);
     }else if($options->bcool_cover!=""){
         $thumbs = $pri_thumbs;
-    }else if($options->public_bcool_cover!=""){
+    }else{
         $thumbs = $pub_thumbs;
     }
     
 } else if($options->public_bcool_cover!=""){
     $thumbs = $pub_thumbs;
 }
+
 $num = count($thumbs);
 // shuffle($thumbs);
 //echo $_POST["cate"];
@@ -203,10 +205,15 @@ var init_page = <?php if($init_flag){
                                 $thumbs[$i]="https://www.flyingfry.cn/usr/uploads/" . $thumbs[$i];
                             }elseif($this->options->bcool_select_origin==="tiktok"){
                                 $thumbs[$i]="/".$thumbs[$i]. $this->options->bcool_select_origin_template;
-                                require_once("Signer.php");
-                                $thumbs[$i]=Signer::main($thumbs[$i]);
-                            }else{
+                                require_once("Signer_tiktok.php");
+                                $signedPath = Signer::main($thumbs[$i]); // 使用默认鉴权方式 A
+                                $thumbs[$i] = $signedPath;
+                                
+                            }elseif ($this->options->bcool_select_origin==="github"){
                                 $thumbs[$i]='https://gcore.jsdelivr.net/gh/locolocoer/github_backup@master/'. $thumbs[$i];
+                            }elseif ($this->options->bcool_select_origin==="123cloud"){
+                                require_once("Signer_123cloud.php");
+                                $thumbs[$i]=Signer_123cloud::main($thumbs[$i]);
                             }
                             
                         }

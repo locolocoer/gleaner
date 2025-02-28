@@ -5,7 +5,7 @@
 class Signer
 {
     public $scheme = "https:";
-
+    private $config;
     /**
      * 鉴权方式 A
      */
@@ -61,12 +61,12 @@ class Signer
 
     private function run($path,$type)
     {
-        $domain = "pic.flyingfry.cn";
-        $key = "";
+        $domain = $this->config["tiktok"]["domain"];
+        $key = $this->config["tiktok"]["key"];
         //$path = "/dm/dm282.jpg~tplv-ocfscsxaet-image.image";
         $randint = rand(0,10000);
         if($type=="A"){
-            return $this->authA($domain, $path, $key, $randint, "fry", "sign");
+            return $this->authA($domain, $path, $key, $randint, "imagex", "sign");
         }elseif($type=="B"){
             return $this->authB($domain, $path, $key);
         }elseif($type=="C"){
@@ -75,10 +75,21 @@ class Signer
             return $this->authD($domain, $path, $key, "sign", false, "time");
         } 
     }
+    private function load_config(){
+        $configPath = __DIR__.'/config.ini';
 
+        // 检查文件是否存在
+        if (!file_exists($configPath)) {
+            throw new Exception("配置文件不存在");
+        }
+        // 解析 INI 文件
+        $this->config = parse_ini_file($configPath, true);  
+    }
     public static function main($path,$type="A") {
         $signer = new static;
-        return $signer->run($path,$type);
+        $signer->load_config();
+        $signedPath=$signer->run($path,$type);
+        return $signedPath;
     }
 
 }
